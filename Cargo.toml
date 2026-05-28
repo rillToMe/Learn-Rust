@@ -1,5 +1,5 @@
 [workspace]
 resolver = "3"
 members = [
-    "learn-1"
+    "basic"
 ]
