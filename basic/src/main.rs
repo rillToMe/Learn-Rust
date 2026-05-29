@@ -552,3 +552,5 @@ fn range_exclusive() {
         println!("Range: {}", array[i])
     }
 }
+
+//Function

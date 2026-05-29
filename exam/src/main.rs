@@ -347,4 +347,63 @@ fn auto_reconnect_api() {
 
 // EXAM 7 HOT
 
+#[test]
+fn logic_gabungan() {
+    let map_area = [
+        [5, 0, 12],
+        [8, 99, 3],
+        [1, 2, 4]
+    ];
 
+    let data_mesin = (String::from("Excavator-X"), 100.0, false);
+
+    let (nama_mesin, mut bensin, status_rusak) = data_mesin;
+
+    let log_nama = nama_mesin.clone();
+
+    let mut target_baris = 0;
+    let mut target_kolom = 0;
+
+    'pencarian: for baris in 0..=2 {
+
+         for kolom in 0..=2{
+            if map_area[baris][kolom] == 99 {
+                target_baris = baris;
+                target_kolom = kolom;
+
+                break 'pencarian;
+            }
+        }
+    }
+
+    let izin_operasi = if status_rusak == false && bensin > 20.0{
+        "System Siap"
+    } else {
+        "Mesin Bermasalah"
+    };
+
+    println!("Status Izin: {}. Menuju lokasi {}, {}", izin_operasi, target_baris, target_kolom);
+
+    let mut kedalaman = 0;
+
+    let laporan_operasi = loop{
+        kedalaman += 1;
+
+        bensin -= 15.5;
+    
+        if kedalaman == 3 {
+            println!("Menambak batu keras! Mengganti mata bor...");
+            continue;
+        }
+
+        if bensin < 10.0{
+            break "Bensin Kritis! Operasi Di Batalkan.";
+        }
+
+        if kedalaman == 5 {
+            break "Target Kedalaman Tercapai!";
+        };
+    };
+    
+    println!("Laporan {}: {} | Sisa Bensin: {} Liter", log_nama, laporan_operasi,  bensin);
+}
