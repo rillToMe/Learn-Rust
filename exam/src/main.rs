@@ -248,3 +248,103 @@ fn engine_hot_kompetensi() {
 
     println!("{} {} {}", backup_username, akun_aman, saldo);
 }
+
+
+// EXAM 6
+
+#[test]
+fn promo_topup() {
+    let nominal_topup = 75000;
+    
+    let status_promo = if nominal_topup >= 100000 {
+        "Bonus 20% Diamond"
+    } else if nominal_topup >= 50000 {
+        "Bonus 10% Diamond"
+    } else {
+        "Tidak ada bonus"
+    };
+
+    println!("{:?}", status_promo);
+
+}
+
+#[test]
+fn simulasi_pengerukan_tanah() {
+    let mut kedalaman_tanah = 0;
+
+    while kedalaman_tanah <= 10 {
+        println!("Mengeruk tanah... Kedalaman saat ini: {} meter", kedalaman_tanah);
+
+        kedalaman_tanah += 2;
+    }
+}
+
+#[test]
+fn compile_id() {
+    let range = 0..=5;
+    println!("Start: {}", range.start());
+    println!("End: {}", range.end());
+
+    for i in range {
+        println!("Compile file module ke-{}...", i);
+    }
+}
+
+#[test]
+fn gacha_pity_finder() {
+    let mut tarikan_ke = 0;
+
+    let hasil_gacha = loop {
+        tarikan_ke += 1;
+
+        if tarikan_ke % 2 != 0{
+            continue;
+        }
+
+        if tarikan_ke == 8 {
+            break "Item Epic Didapatkan!";
+        }
+
+        println!("{}", tarikan_ke);
+    };
+
+    println!("{}", hasil_gacha);
+}
+
+// EXAM 6.1
+
+#[test]
+fn  pengecekan_roda_kendaraan() {
+    let range_roda = 1..=6;
+
+    for i in range_roda {
+        println!("Mengecek roda ke-{}... Kondisi Aman", i);
+    }
+}
+
+#[test]
+fn auto_reconnect_api() {
+    let mut percobaan = 0;
+
+    let status_koneksi = loop{
+        percobaan += 1;
+
+        if percobaan == 3 {
+            println!("Percobaan ke-3 timeout dari supplier!");
+            continue;
+        }
+
+        if percobaan == 5 {
+            break "Berhasil terhubung ke server H2H pada percobaan ke-5!";
+        }
+
+        println!("Mencoba koneksi ke-{}... gagal.", percobaan);
+    };
+
+    println!("{}", status_koneksi);
+}
+
+
+// EXAM 7 HOT
+
+

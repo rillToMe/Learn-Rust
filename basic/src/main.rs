@@ -407,3 +407,148 @@ fn clone() {
 
     println!("{} {}", name1, name2);
 }
+
+// IF EXPRESSION
+#[test]
+fn if_expression() {
+    let value = 9;
+    
+    //manual
+    let result1: &str;
+    if value >= 8 {
+        result1 = "Very Good";
+    } else if value >= 6 {
+        result1 = "Not Bad";
+    } else if value >=3 {
+        result1 = "Bad";
+    } else {
+        result1 = "Very Bad";
+    }
+
+    println!("{}", result1);
+
+    // otomatis
+    let result2 = if value >= 8 {
+        "Very Good"
+    } else if value >= 6 {
+        "Not Bad"
+    } else if value >= 3 {
+        "Bad"
+    } else {
+        "Very Bad"
+    };
+
+    println!("{}", result2)
+}
+
+#[test]
+fn loop_expression() {
+    let mut data = 0;
+
+    loop {
+        data += 1;
+
+        if data > 10 {
+            break;
+        } else if data % 2 == 0{
+            continue;
+        }
+
+        println!("Data: {}", data);
+    }
+}
+
+#[test]
+fn loop_return_value() {
+    let mut data = 0;
+
+    let result = loop {
+        data += 1;
+        if data > 10 {
+            break data * 2;
+        }
+    };
+
+    println!("{}", result);
+}
+
+#[test]
+fn loop_label() {
+    let mut number = 1;
+     'outer: loop {
+        let mut i = 1;
+        loop {
+            if number > 10 {
+                break 'outer;
+            }
+
+            println!("{} x {} = {}", number, i, number * i);
+            i += 1;
+            if i > 10 {
+                break;
+            }
+        }
+        number += 1;
+     }
+}
+
+//While Loop 
+#[test]
+fn while_loop() {
+    let mut data = 0;
+
+    while data <= 10 {
+        if data % 2 == 0 {
+            println!("Data: {}", data);
+        }
+        data += 1;
+    }
+}
+
+#[test]
+fn array_iteration() {
+    let array = ["A", "B", "C", "D", "E"];
+    let mut index = 0;
+
+    while index < array.len() {
+        println!("Value: {}", array[index]);
+        index += 1;
+    }
+}
+
+// For Loop
+#[test]
+fn for_loop() {
+    let array = ["A", "B", "C", "D", "E"];
+
+    for value in array {
+        println!("Value: {}", value);
+    }
+}
+
+#[test]
+fn range() {
+    // let array = ["A", "B", "C", "D", "E"];
+
+    let range = 0..5;
+
+    println!("Start: {}", range.start);
+    println!("End: {}", range.end);
+
+    for i in range {
+        println!("Range: {}", i)
+    }
+}
+
+#[test]
+fn range_exclusive() {
+    let range = 0..=4;
+    println!("Start: {}", range.start());
+    println!("End: {}", range.end());
+
+    let array = ["A", "B", "C", "D", "E"];
+
+    for i in range {
+        println!("Range: {}", array[i])
+    }
+}
