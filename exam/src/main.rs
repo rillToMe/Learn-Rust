@@ -161,3 +161,90 @@ fn dashboard_client() {
     println!("Data transaksi: {:?}. Rata-Rata harian: {}", transaksi_harian, rata_rata);
 
 }
+
+// Exam 4
+
+#[test]
+fn grip_koordinat_map() {
+    let area_tanah = [
+        [10,  15],
+        [12, 18]
+    ];
+
+    {
+     let titik_tertinggi = area_tanah[1][1];
+     println!("{}", titik_tertinggi);
+    }
+
+    println!("{:?}", area_tanah);
+}
+
+const BIAYA_ADMIN: i32 = 2500;
+
+#[test]
+fn admin_topup() {
+    let harga_dasar = 50000;
+    println!("{}", harga_dasar);
+
+    let mut harga_final = harga_dasar;
+
+    harga_final += BIAYA_ADMIN;
+
+    println!("{:?} {:?}", harga_dasar, harga_final);
+}
+
+#[test]
+fn modif_string() {
+    let input_kasar = "  agen_silver  ";
+    let trim =  input_kasar.trim();
+    println!("{}", trim);
+
+    let mut status_agen = String::from("agen_silver");
+    status_agen = status_agen.replace("silver", "gold");
+    println!("STATUS BARU: {}", status_agen);
+}
+
+#[test]
+fn register_package() {
+    let nama_paket = String::from("rak-core");
+    let paket_backup = nama_paket.clone();
+
+    let paket_diproses = nama_paket;
+
+    println!("{} {}", paket_backup, paket_diproses);
+}
+
+// EXAM 5 HOT
+
+const POTONGAN_ADMIN: i64 = 5000;
+
+#[test]
+fn engine_hot_kompetensi() {
+    let data_player = (String::from("  Sultan_Game  "), 1500000, false);
+
+    let (username, mut saldo, status_banned) = data_player;
+    
+    let username = username.trim().replace("Sultan", "Raja");
+
+    let backup_username = username.clone();
+
+    let riwayat_belanja = [
+        [500, 1000],
+        [2500, 3000]
+    ];
+
+    let riwayat = riwayat_belanja[1][1];
+    let pengeluaran = riwayat as i64;
+
+    {
+        let hitung = pengeluaran + POTONGAN_ADMIN;
+        saldo  -= hitung;
+        let sisa_saldo_scope = saldo;
+
+        println!("{}", sisa_saldo_scope);
+    }
+
+    let akun_aman = saldo > 0 && status_banned == false;
+
+    println!("{} {} {}", backup_username, akun_aman, saldo);
+}

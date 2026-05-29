@@ -293,3 +293,117 @@ fn constant() {
     const MINIMUM: i32 = 0;
     println!("{} {}", MAXIMUM, MINIMUM);
 }
+
+//Variable Scope
+ #[test]
+ fn variable_scope() {
+    let adit = 1;
+
+    { // inner scope
+        println!("Ada berapa Adit:{}", adit);
+        let budi = 1;
+        println!("Ada berapa Budi: {}", budi);
+    }
+
+    // println!("{} {}", adit , budi); //error jika budi di print di luar scope nya
+ }
+
+ #[test]
+ fn stack_heap() {
+    function_a();
+    function_b();
+ }
+
+ fn function_a() {
+    let a = 10;
+    let b = String::from("Adit");
+    println!("{} {}", a, b);
+ }
+
+ fn function_b() {
+    let a = 20;
+    let b = String::from("Budi");
+    println!("{} {}", a, b);
+ }
+
+ //String slice
+ #[test]
+ fn string_slice() {
+    let name =  "  Rahmat Aditya  ";
+    let trim = name.trim();
+
+    println!("{}", name);
+    println!("{}", trim);
+
+    let mut username = "Adit";
+    println!("{}", username);
+
+    username = "Budi";
+    println!("{}", username);
+
+    let mut value = 10;
+    println!("{}", value);
+    value = 11;
+    println!("{}", value);
+ }
+
+ //String
+ #[test]
+ fn string_type() {
+    let mut name = String::from("Rahmat Budi");
+    println!("{}", name);
+
+    name.push_str(" Santoso");
+    println!("{}", name);
+
+    let andito = name.replace("Rahmat", "Andito");
+    println!("{}", andito);
+ }
+
+ // OwnerShip Rules
+ #[test]
+ fn ownership_rules() {
+    // a belum bisa di pakai karena belum di deklarasikan disini
+     let a = 10; // a sudah bisa di pakai karena sudah di deklarasikan
+
+     {// b belum bisa di pakai karena belum di deklarasikan di sini
+        let b = 20; // b sudah bisa di gunakan karena b sudah di deklarasikan di sini
+
+        println!("{} {}", a, b);
+     }// b sudah tidak bisa di pakai di sini karena  scope sudah di tutup
+
+
+     println!("{}", a); // a bisa di pakai karena masih  di function scope yang sama
+ }
+
+// Data Copy (Khusus untuk type stack) tidak untuk heap
+#[test]
+fn data_copy() {
+    let a = 50;
+    let b =  a; // value let b adalah hasil copy dari let a
+
+    println!("{} {}", a, b);
+}
+
+#[test]
+fn ownership_movement() {
+    let name1 = String::from("Adit");
+
+    let name2 = name1; //ownership name1 pindah ke name2
+
+    println!("{}", name2);
+    // println!("{}", name1);   
+
+    /*name1 sudah tidak bisa di pakai 
+    karena sudah di pindahkan ownernya ke  name2*/
+}
+
+//khusus untuk type data heap, meng clone variable 
+#[test]
+fn clone() {
+    let name1 = String::from("Adit");
+
+    let name2 = name1.clone();
+
+    println!("{} {}", name1, name2);
+}
